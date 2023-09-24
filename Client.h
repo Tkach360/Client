@@ -58,6 +58,7 @@ Client InitClientFromConsole();
 string GetName(Client client);
 string GetPhoneNumber(Client client);
 int GetAge(Client client);
+void ShowInConsole(Client client);
 
 //---------------------------------------Account--------------------------------------
 

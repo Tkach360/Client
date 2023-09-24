@@ -61,6 +61,12 @@ double GetAllAccountsMoney(Client client) {
 	}
 	return AllAccountsMoney;
 }
+void ShowInConsole(Client client) {
+	cout << "Name: " + client.Name + " Age: " + to_string(client.Age) + " Phone number: " +
+		client.PhoneNumber << endl;
+	cout << "  Accounts: " + to_string(client.Accounts.size()) + " Credits: " +
+		to_string(client.Credits.size()) + " Deposits: " + to_string(client.Deposits.size()) << endl;
+}
 
 //---------------------------------InputClientFromConsole------------------------------------
 

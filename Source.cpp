@@ -3,6 +3,8 @@
 
 int main() {
 	Client cli = InitClient("Igor", 23, "234234");
+	ShowInConsole(cli);
+
 	NewAccount(&cli, 10000);
 	NewAccount(&cli, 10000);
 	ShowInConsole(cli.Accounts[0]);
