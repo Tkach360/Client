@@ -242,11 +242,12 @@ void InputNewDepositFromConsole(Client* client) {
 
 //------------------------------------------NewTransaction--------------------------------------------
 
-Transaction InitTransaction(Account account, string CounterName, double money) {
+Transaction InitTransaction(Account account, string AlterClientName, double money, bool Sent) {
 	Transaction newTransaction;
-	newTransaction.money = money;
-	newTransaction.CounterName = CounterName;
-	newTransaction.CounterAccountId = GetAccountId(account);
+	newTransaction.Money = money;
+	newTransaction.AlterClientName = AlterClientName;
+	newTransaction.AlterAccountID = GetAccountId(account);
+	newTransaction.Sent = Sent;
 
 	time_t now = time(NULL);
 	newTransaction.Time = (*localtime(&now));
@@ -254,24 +255,16 @@ Transaction InitTransaction(Account account, string CounterName, double money) {
 	return newTransaction;
 }
 
-TransactionResult NewTransaction(Account* Account_1, Account* Account_2, double transactionMoney) {
-	if (Account_1->money - transactionMoney < 0) { // проверка, достаточно ли средств
-		return InsufficientFunds;
-	}
-	if (transactionMoney <= 0) { // проверка на перевод отрицательной или нулевой суммы
-		return NegativeAmount;
-	}
+void NewTransaction(Account* Account_1, Account* Account_2, double transactionMoney) {
 
 	Account_1->money -= transactionMoney;
 	Account_2->money += transactionMoney;
 
-	Transaction newTransactionForAccount_1 = InitTransaction(*Account_2, Account_1->ClientName, transactionMoney);
-	Transaction newTransactionForAccount_2 = InitTransaction(*Account_1, Account_2->ClientName, -transactionMoney);
+	Transaction newTransactionForAccount_1 = InitTransaction(*Account_2, Account_1->ClientName, transactionMoney, false);
+	Transaction newTransactionForAccount_2 = InitTransaction(*Account_1, Account_2->ClientName, transactionMoney, true);
 
 	Account_1->Transactions.push_back(newTransactionForAccount_1);
 	Account_2->Transactions.push_back(newTransactionForAccount_2);
-
-	return OK;
 }
 
 //-------------------------------------InputTransactionFromConsole------------------------------------
@@ -289,4 +282,23 @@ void InputNewTransactionFromConsole(Account* Account_1, Account* Account_2) {
 
 	NewTransaction(Account_1, Account_2, transactionMoney);
 	cout << "Operation was successfully completed" << endl;
+}
+
+void ShowInConsole(Transaction transaction) {
+	string strTime = to_string(transaction.Time.tm_mday) + "." + to_string(transaction.Time.tm_mon + 1) + "."
+		+ to_string(transaction.Time.tm_year + 1900) + " " + to_string(transaction.Time.tm_hour) + ":" 
+		+ to_string(transaction.Time.tm_min);
+	string strMoney, strAlterClientName, strAlterAccountID;
+
+	if (transaction.Sent) {
+		strMoney = "-" + to_string(transaction.Money);
+		strAlterClientName = "to " + transaction.AlterClientName;
+	}
+	else {
+		strMoney = "+" + to_string(transaction.Money);
+		strAlterClientName = "from " + transaction.AlterClientName;
+	}
+
+	strAlterAccountID = to_string(transaction.AlterAccountID);
+	cout << "Time: " + strTime + " " + strMoney + " " + strAlterClientName + " acc. " + strAlterAccountID << endl;
 }

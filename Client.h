@@ -13,9 +13,10 @@ enum TransactionResult {
 };
 
 struct Transaction {
-	double money;
-	string CounterName;
-	int CounterAccountId;
+	bool Sent;
+	double Money;
+	string AlterClientName;
+	int AlterAccountID;
 	tm Time;
 };
 
@@ -92,5 +93,6 @@ double GetFinalDepositAmount(Deposit deposit);
 
 //-----------------------------------------------Transaction-------------------------
 
-TransactionResult NewTransaction(Account* Account_1, Account* Account_2, double transactionMoney);
+void NewTransaction(Account* Account_1, Account* Account_2, double transactionMoney);
 void InputNewTransactionFromConsole(Account* Account_1, Account* Account_2);
+void ShowInConsole(Transaction transaction);
