@@ -97,6 +97,8 @@ double GetContribution(Credit credit);
 double GetFinalContributionsPayments(Credit credit);
 void ShowInConsole(Credit credit);
 
+bool CheckCredit(Credit credit);
+
 //--------------------------------------Deposit------------------------------------------
 
 void NewDeposit(Client* client, int year, double body, double percent);

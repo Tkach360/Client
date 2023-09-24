@@ -234,6 +234,11 @@ void ShowInConsole(Credit credit) {
 	cout << Info << endl;
 }
 
+bool CheckCredit(Credit credit) {
+	if (credit.body * (credit.percent - 1) >= credit.contribution || credit.percent < 1) return false;
+	return true;
+}
+
 //--------------------------------------InputNewCreditFromConsole-------------------------------------
 
 void InputNewCreditFromConsole(Client* client) {
