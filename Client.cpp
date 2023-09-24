@@ -224,6 +224,11 @@ double GetFinalDepositAmount(Deposit deposit) {
 	}
 	return body;
 }
+void ShowInConsole(Deposit deposit) {
+	string Info = "Deposit year: " + to_string(deposit.year) + " body: " + to_string(deposit.body) +
+		" percent: " + to_string(deposit.percent);
+	cout << Info << endl;
+}
 
 //----------------------------------------InputNewDepositFromConsole------------------------------------
 

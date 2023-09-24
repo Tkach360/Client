@@ -90,6 +90,7 @@ void NewDeposit(Client* client, int year, double body, double percent);
 void InputNewDepositFromConsole(Client* client);
 
 double GetFinalDepositAmount(Deposit deposit);
+void ShowInConsole(Deposit deposit);
 
 //-----------------------------------------------Transaction-------------------------
 
