@@ -83,6 +83,7 @@ void InputNewCreditFromConsole(Client* client);
 
 double GetContribution(Credit credit);
 double GetFinalContributionsPayments(Credit credit);
+void ShowInConsole(Credit credit);
 
 //--------------------------------------Deposit------------------------------------------
 

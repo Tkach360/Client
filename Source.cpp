@@ -12,4 +12,7 @@ int main() {
 
 	NewDeposit(&cli, 10, 10000, 1.08);
 	ShowInConsole(cli.Deposits[0]);
+
+	NewCredit(&cli, 10, 10000, 1.08, 900);
+	ShowInConsole(cli.Credits[0]);
 }

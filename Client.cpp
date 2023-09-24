@@ -183,6 +183,11 @@ double GetFinalContributionsPayments(Credit credit) {
 	}
 	return FinalContributionsPayments;
 }
+void ShowInConsole(Credit credit) {
+	string Info = "Credit year: " + to_string(credit.year) + " body: " + to_string(credit.body) +
+		" percent: " + to_string(credit.percent) + " contribution: " + to_string(credit.contribution);
+	cout << Info << endl;
+}
 
 //--------------------------------------InputNewCreditFromConsole-------------------------------------
 
