@@ -142,6 +142,9 @@ void ShowAllTransactionInConsole(Account account) {
 	for (Transaction transaction : account.Transactions)
 		ShowInConsole(transaction);
 }
+vector<Transaction> GetAllTransactions(Account account) {
+	return account.Transactions;
+}
 
 //---------------------------------------InputNewAccountFromConsole-----------------------------------
 

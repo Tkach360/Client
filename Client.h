@@ -68,6 +68,7 @@ int GetAccountId(Account account);
 double GetMoney(Account account);
 void ShowInConsole(Account account);
 void ShowAllTransactionInConsole(Account account);
+vector<Transaction> GetAllTransactions(Account account);
 
 //------------------------Get-Credit-and-Deposit---------------------------------------
 int GetYear(Credit credit);
