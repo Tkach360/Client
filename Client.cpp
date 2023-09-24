@@ -137,6 +137,11 @@ void ShowInConsole(Account account) {
 		" balance: " + to_string(account.money);
 	cout << Info << endl;
 }
+void ShowAllTransactionInConsole(Account account) {
+	cout << "All transaction:" << endl;
+	for (Transaction transaction : account.Transactions)
+		ShowInConsole(transaction);
+}
 
 //---------------------------------------InputNewAccountFromConsole-----------------------------------
 
