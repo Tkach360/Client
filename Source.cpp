@@ -5,6 +5,7 @@ int main() {
 	Client cli = InitClient("Igor", 23, "234234");
 	NewAccount(&cli, 10000);
 	NewAccount(&cli, 10000);
+	ShowInConsole(cli.Accounts[0]);
 
 	NewTransaction(&cli.Accounts[0], &cli.Accounts[1], 5000);
 	ShowInConsole(cli.Accounts[1].Transactions[0]);

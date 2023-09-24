@@ -126,6 +126,11 @@ void NewAccount(Client* client, double money) {
 
 int GetAccountId(Account account) { return account.id; }
 double GetMoney(Account account) { return account.money; }
+void ShowInConsole(Account account) {
+	string Info = "Client: " + account.ClientName + " num: " + to_string(account.id) +
+		" balance: " + to_string(account.money);
+	cout << Info << endl;
+}
 
 //---------------------------------------InputNewAccountFromConsole-----------------------------------
 
