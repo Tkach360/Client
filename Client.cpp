@@ -67,6 +67,15 @@ void ShowInConsole(Client client) {
 	cout << "  Accounts: " + to_string(client.Accounts.size()) + " Credits: " +
 		to_string(client.Credits.size()) + " Deposits: " + to_string(client.Deposits.size()) << endl;
 }
+vector<Account> GetAllAccounts(Client &client) {
+	return client.Accounts;
+}
+vector<Deposit> GetAllDeposits(Client& client) {
+	return client.Deposits;
+}
+vector<Credit> GetAllCredits(Client& client) {
+	return client.Credits;
+}
 
 //---------------------------------InputClientFromConsole------------------------------------
 

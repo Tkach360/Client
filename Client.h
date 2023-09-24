@@ -59,6 +59,9 @@ string GetName(Client client);
 string GetPhoneNumber(Client client);
 int GetAge(Client client);
 void ShowInConsole(Client client);
+vector<Account> GetAllAccounts(Client& client);
+vector<Deposit> GetAllDeposits(Client& client);
+vector<Credit> GetAllCredits(Client& client);
 
 //---------------------------------------Account--------------------------------------
 
