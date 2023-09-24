@@ -63,9 +63,10 @@ void SetAge(Client* client, int Age);
 void SetName(Client* client, string Name);
 
 void ShowInConsole(Client client);
-vector<Account> GetAllAccounts(Client& client);
-vector<Deposit> GetAllDeposits(Client& client);
-vector<Credit> GetAllCredits(Client& client);
+vector<Account> GetAllAccounts(Client* client);
+vector<Deposit> GetAllDeposits(Client* client);
+vector<Credit> GetAllCredits(Client* client);
+vector<Transaction> GetAllTransactions(Client *client);
 
 //---------------------------------------Account--------------------------------------
 
