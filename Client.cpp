@@ -52,6 +52,17 @@ Client InitClient(string name, int age, string PhoneNumber) {
 string GetName(Client client) { return client.Name; }
 string GetPhoneNumber(Client client) { return client.PhoneNumber; }
 int GetAge(Client client) { return client.Age; }
+void SetPhoeNumber(Client* client, string PhoneNumber) {
+	client->PhoneNumber = PhoneNumber;
+}
+void SetAge(Client* client, int Age) {
+	client->Age = Age;
+}
+void SetName(Client* client, string Name) {
+	client->Name = Name;
+	for (int i = 0; i < client->Accounts.size(); i++)
+		client->Accounts[i].ClientName = Name;
+}
 
 double GetAllAccountsMoney(Client client) {
 	double AllAccountsMoney = 0;

@@ -58,6 +58,10 @@ Client InitClientFromConsole();
 string GetName(Client client);
 string GetPhoneNumber(Client client);
 int GetAge(Client client);
+void SetPhoeNumber(Client *client, string PhoneNumber);
+void SetAge(Client* client, int Age);
+void SetName(Client* client, string Name);
+
 void ShowInConsole(Client client);
 vector<Account> GetAllAccounts(Client& client);
 vector<Deposit> GetAllDeposits(Client& client);
