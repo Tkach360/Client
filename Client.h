@@ -29,13 +29,13 @@ struct Account {
 };
 
 struct Deposit {
-	int year;
+	int years;
 	double percent; // в формате 1.XX..
 	double body;
 };
 
 struct Credit {
-	int year;
+	int years;
 	double percent; // в формате 1.XX..
 	double body;
 	double contribution;
@@ -98,6 +98,7 @@ double GetFinalContributionsPayments(Credit credit);
 void ShowInConsole(Credit credit);
 
 bool CheckCredit(Credit credit);
+bool CheckCredit(int years, double body, double percent, double contribution);
 
 //--------------------------------------Deposit------------------------------------------
 

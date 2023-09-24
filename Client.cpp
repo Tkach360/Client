@@ -87,7 +87,7 @@ vector<Deposit> GetAllDeposits(Client* client) {
 vector<Credit> GetAllCredits(Client* client) {
 	return client->Credits;
 }
-vector<Transaction> GetAllTransactions(Client *client) {
+vector<Transaction> GetAllTransactions(Client* client) {
 	vector<Transaction> AllTransactions;
 	for (Account account : client->Accounts)
 		AllTransactions.insert(AllTransactions.end(), account.Transactions.begin(), account.Transactions.end());
@@ -183,8 +183,8 @@ void InputNewAccountFromConsole(Client* client) {
 
 //-------------------------------------Get-functions-Credit-and-Deposit--------------------------
 
-int GetYear(Credit credit) { return credit.year; }
-int GetYear(Deposit deposit) { return deposit.year; }
+int GetYear(Credit credit) { return credit.years; }
+int GetYear(Deposit deposit) { return deposit.years; }
 
 double GetBody(Credit credit) { return credit.body; }
 double GetBody(Deposit deposit) { return deposit.body; }
@@ -194,9 +194,9 @@ double GetPercent(Deposit deposit) { return deposit.percent; }
 
 //-------------------------------------Credit-----------------------------------------------------
 
-Credit InitCredit(int year, double body, double percent, double contribution) {
+Credit InitCredit(int years, double body, double percent, double contribution) {
 	Credit newCredit;
-	newCredit.year = year;
+	newCredit.years = years;
 	newCredit.body = body;
 	newCredit.percent = percent;
 	newCredit.contribution = contribution;
@@ -229,13 +229,31 @@ double GetFinalContributionsPayments(Credit credit) {
 	return FinalContributionsPayments;
 }
 void ShowInConsole(Credit credit) {
-	string Info = "Credit year: " + to_string(credit.year) + " body: " + to_string(credit.body) +
+	string Info = "Credit year: " + to_string(credit.years) + " body: " + to_string(credit.body) +
 		" percent: " + to_string(credit.percent) + " contribution: " + to_string(credit.contribution);
 	cout << Info << endl;
 }
 
 bool CheckCredit(Credit credit) {
-	if (credit.body * (credit.percent - 1) >= credit.contribution || credit.percent < 1) return false;
+	if (credit.body * (credit.percent - 1) >= credit.contribution) return false;
+
+	int TrueYears = 0;
+	double Body = credit.body;
+	for (TrueYears; Body > 0; TrueYears++)
+		Body -= Body * credit.percent;
+	if (TrueYears != credit.years) return false;
+
+	return true;
+}
+bool CheckCredit(int years, double body, double percent, double contribution) {
+	if (body * (percent - 1) >= contribution) return false;
+
+	int TrueYears = 0;
+	double Body = body;
+	for (TrueYears; Body > 0; TrueYears++)
+		Body -= Body * percent;
+	if (TrueYears != years) return false;
+
 	return true;
 }
 
@@ -257,9 +275,9 @@ void InputNewCreditFromConsole(Client* client) {
 
 //----------------------------------NewDeposit-----------------------------------------------------
 
-Deposit InitDeposit(int year, double body, double percent) {
+Deposit InitDeposit(int years, double body, double percent) {
 	Deposit newDeposit;
-	newDeposit.year = year;
+	newDeposit.years = years;
 	newDeposit.body = body;
 	newDeposit.percent = percent;
 	return newDeposit;
@@ -280,7 +298,7 @@ double GetFinalDepositAmount(Deposit deposit) {
 	return body;
 }
 void ShowInConsole(Deposit deposit) {
-	string Info = "Deposit year: " + to_string(deposit.year) + " body: " + to_string(deposit.body) +
+	string Info = "Deposit year: " + to_string(deposit.years) + " body: " + to_string(deposit.body) +
 		" percent: " + to_string(deposit.percent);
 	cout << Info << endl;
 }
@@ -346,7 +364,7 @@ void InputNewTransactionFromConsole(Account* Account_1, Account* Account_2) {
 
 void ShowInConsole(Transaction transaction) {
 	string strTime = to_string(transaction.Time.tm_mday) + "." + to_string(transaction.Time.tm_mon + 1) + "."
-		+ to_string(transaction.Time.tm_year + 1900) + " " + to_string(transaction.Time.tm_hour) + ":" 
+		+ to_string(transaction.Time.tm_year + 1900) + " " + to_string(transaction.Time.tm_hour) + ":"
 		+ to_string(transaction.Time.tm_min);
 	string strMoney, strAlterClientName, strAlterAccountID;
 
