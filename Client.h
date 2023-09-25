@@ -6,12 +6,6 @@
 
 using namespace std;
 
-enum TransactionResult {
-	InsufficientFunds, // недостаточно средств
-	NegativeAmount, // отрицательная сумма
-	OK // все ок
-};
-
 struct Transaction {
 	bool Sent;
 	double Money;
