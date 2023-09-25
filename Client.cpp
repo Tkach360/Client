@@ -235,6 +235,7 @@ void ShowInConsole(Credit credit) {
 }
 
 bool CheckCredit(Credit credit) {
+	if (!(credit.years > 0 && credit.body > credit.contribution && credit.percent > 1)) return false;
 	if (credit.body * (credit.percent - 1) >= credit.contribution) return false;
 
 	int TrueYears = 0;
@@ -246,6 +247,7 @@ bool CheckCredit(Credit credit) {
 	return true;
 }
 bool CheckCredit(int years, double body, double percent, double contribution) {
+	if (!(years > 0 && body > contribution && percent > 1)) return false;
 	if (body * (percent - 1) >= contribution) return false;
 
 	int TrueYears = 0;
