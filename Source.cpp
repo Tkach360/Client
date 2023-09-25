@@ -28,10 +28,10 @@ int main() {
 	ShowAllTransactionsInConsole(cli.Accounts[0]);
 
 	cout << "\n7) Test GetFinalContributionsPayments" << endl;
-	GetFinalContributionsPayments(cli.Credits[0]);
+	cout << "Final contrib pay: " << GetFinalContributionsPayments(cli.Credits[0]) << endl;
 
 	cout << "\n8) Test GetFinalDepositAmount" << endl;
-	GetFinalDepositAmount(cli.Deposits[0]);
+	cout << "Final deposit amount: " << GetFinalDepositAmount(cli.Deposits[0]) << endl;
 
 	cout << "\n9) Test InitClientFromConsole" << endl;
 	Client cli_c = InitClientFromConsole();
