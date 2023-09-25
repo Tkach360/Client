@@ -75,7 +75,7 @@ void InputNewAccountFromConsole(Client* client);
 int GetAccountId(Account account);
 double GetMoney(Account account);
 void ShowInConsole(Account account);
-void ShowAllTransactionInConsole(Account account);
+void ShowAllTransactionsInConsole(Account account);
 vector<Transaction> GetAllTransactions(Account account);
 
 //------------------------Get-Credit-and-Deposit---------------------------------------
