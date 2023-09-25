@@ -355,10 +355,19 @@ void InputNewTransactionFromConsole(Account* Account_1, Account* Account_2) {
 		" account number " + to_string(Account_2->id) + ": ";
 
 	double transactionMoney;
+	bool flag;
 	do {
+		flag = false;
 		transactionMoney = InputDouble(message);
-		if (transactionMoney == 0) cout << "The transfer amount cannot be zero" << endl;
-	} while (transactionMoney == 0);
+		if (transactionMoney == 0) {
+			cout << "The transfer amount cannot be zero" << endl;
+			flag = true;
+		}
+		if (transactionMoney > Account_1->money) {
+			cout << "Insufficient funds in the account" << endl;
+			flag = true;
+		}
+	} while (flag);
 
 	NewTransaction(Account_1, Account_2, transactionMoney);
 	cout << "Operation was successfully completed" << endl;
